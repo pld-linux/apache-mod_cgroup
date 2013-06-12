@@ -25,17 +25,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sysconfdir	%(%{apxs} -q SYSCONFDIR 2>/dev/null)/conf.d
 
 %description
-mod_cgroup provides a system administrator with the capability to provide predictable service levels for each virtual host declared in httpd.
+mod_cgroup provides a system administrator with the capability to
+provide predictable service levels for each virtual host declared in
+httpd.
 
 mod_cgroup can be used for:
-* Offering grades of service per virtual host or a group of virtual hosts.
-* Protecting other virtual hosts from problematic resource abuse in another vhost.
-* Penalizing a virtual host which fails to respect resouce limitations.
-* Ensuring a predictable capacity level is provided to all web services.
-
-mod_cgroup is an Apache 2 filter which scans the content delivered by
-the proxy module (mod_proxy) for viruses using the Clamav virus
-scanning engine.
+- Offering grades of service per virtual host or a group of virtual
+  hosts.
+- Protecting other virtual hosts from problematic resource abuse in
+  another vhost.
+- Penalizing a virtual host which fails to respect resouce
+  limitations.
+- Ensuring a predictable capacity level is provided to all web
+  services.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{snap}
@@ -63,6 +65,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README.md 
+%doc README.md
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/mod_cgroup.so
