@@ -6,7 +6,7 @@
 Summary:	Resource management per vhost
 Name:		apache-mod_%{mod_name}
 Version:	0.%{snapdate}.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Daemons/HTTP
 Source0:	https://github.com/MatthewIfe/mod_cgroup/archive/59adb1a668f0a8504b1124cf0bb93d7e61b21b01.zip
@@ -43,7 +43,7 @@ mod_cgroup can be used for:
 %setup -q -n mod_%{mod_name}-%{snap}
 
 %build
-%{apxs} -c mod_%{mod_name}/mod_%{mod_name}.c -o mod_%{mod_name}.la
+%{apxs} -c mod_%{mod_name}/mod_%{mod_name}.c -o mod_%{mod_name}.la -lcgroup
 
 %install
 rm -rf $RPM_BUILD_ROOT
